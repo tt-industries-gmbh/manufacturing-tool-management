@@ -27,7 +27,7 @@ import {
   Warning as WarningIcon,
   Schedule as ScheduleIcon,
 } from '@mui/icons-material';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { maintenanceAPI, toolsAPI } from '../services/api';
 import { format } from 'date-fns';
 
@@ -338,11 +338,13 @@ const Maintenance: React.FC = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <DatePicker
+              <TextField
+                fullWidth
+                type="date"
                 label={t('maintenance.maintenanceDate')}
-                value={formData.maintenance_date}
-                onChange={(newValue) => newValue && setFormData({ ...formData, maintenance_date: newValue })}
-                slotProps={{ textField: { fullWidth: true } }}
+                value={formData.maintenance_date.toISOString().split('T')[0]}
+                onChange={(e) => setFormData({ ...formData, maintenance_date: new Date(e.target.value) })}
+                InputLabelProps={{ shrink: true }}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
