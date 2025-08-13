@@ -1,0 +1,100 @@
+{
+  "common": {
+    "loading": "加载中...",
+    "error": "错误",
+    "save": "保存",
+    "cancel": "取消",
+    "delete": "删除",
+    "edit": "编辑",
+    "add": "添加",
+    "search": "搜索",
+    "filter": "筛选",
+    "export": "导出",
+    "import": "导入",
+    "actions": "操作",
+    "status": "状态",
+    "confirm": "确认",
+    "close": "关闭"
+  },
+  "navigation": {
+    "dashboard": "仪表板",
+    "tools": "工具",
+    "maintenance": "维护",
+    "reports": "报告",
+    "settings": "设置",
+    "logout": "退出"
+  },
+  "auth": {
+    "login": "登录",
+    "username": "用户名",
+    "password": "密码",
+    "loginSuccess": "登录成功",
+    "loginFailed": "登录失败",
+    "unauthorized": "未授权访问"
+  },
+  "dashboard": {
+    "title": "工具管理仪表板",
+    "totalTools": "工具总数",
+    "availableTools": "可用工具",
+    "inUseTools": "使用中",
+    "maintenanceTools": "维护中",
+    "upcomingMaintenance": "即将维护",
+    "overdueMaintenance": "逾期维护",
+    "recentActivities": "最近活动",
+    "criticalTools": "关键工具",
+    "toolStatusDistribution": "工具状态分布",
+    "toolConditionDistribution": "工具状况分布"
+  },
+  "tools": {
+    "title": "工具管理",
+    "addTool": "添加新工具",
+    "toolCode": "工具编码",
+    "toolName": "工具名称",
+    "category": "类别",
+    "storageLocation": "存储位置",
+    "condition": "状况",
+    "lastUsed": "上次使用",
+    "lastMaintenance": "上次维护",
+    "nextMaintenance": "下次维护",
+    "usageCount": "使用次数",
+    "notes": "备注",
+    "maintenanceInterval": "维护间隔（天）",
+    "conditions": {
+      "excellent": "优秀",
+      "good": "良好",
+      "fair": "一般",
+      "poor": "较差",
+      "needs_repair": "需要维修"
+    },
+    "statuses": {
+      "available": "可用",
+      "in_use": "使用中",
+      "maintenance": "维护中",
+      "retired": "已退役"
+    },
+    "startUsage": "开始使用",
+    "endUsage": "结束使用",
+    "productionOrder": "生产订单"
+  },
+  "maintenance": {
+    "title": "维护管理",
+    "addRecord": "添加维护记录",
+    "maintenanceType": "维护类型",
+    "description": "描述",
+    "performedBy": "执行人",
+    "maintenanceDate": "维护日期",
+    "nextMaintenanceDate": "下次维护日期",
+    "cost": "费用",
+    "partsReplaced": "更换部件",
+    "upcomingMaintenance": "即将维护",
+    "overdueTools": "逾期工具",
+    "maintenanceHistory": "维护历史",
+    "types": {
+      "preventive": "预防性维护",
+      "corrective": "纠正性维护",
+      "calibration": "校准",
+      "inspection": "检查",
+      "cleaning": "清洁"
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "filter": "Filter",
+    "export": "Export",
+    "import": "Import",
+    "actions": "Actions",
+    "status": "Status",
+    "confirm": "Confirm",
+    "close": "Close"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "tools": "Tools",
+    "maintenance": "Maintenance",
+    "reports": "Reports",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "auth": {
+    "login": "Login",
+    "username": "Username",
+    "password": "Password",
+    "loginSuccess": "Login successful",
+    "loginFailed": "Login failed",
+    "unauthorized": "Unauthorized access"
+  },
+  "dashboard": {
+    "title": "Tool Management Dashboard",
+    "totalTools": "Total Tools",
+    "availableTools": "Available Tools",
+    "inUseTools": "In Use",
+    "maintenanceTools": "Under Maintenance",
+    "upcomingMaintenance": "Upcoming Maintenance",
+    "overdueMaintenance": "Overdue Maintenance",
+    "recentActivities": "Recent Activities",
+    "criticalTools": "Critical Tools",
+    "toolStatusDistribution": "Tool Status Distribution",
+    "toolConditionDistribution": "Tool Condition Distribution"
+  },
+  "tools": {
+    "title": "Tool Management",
+    "addTool": "Add New Tool",
+    "toolCode": "Tool Code",
+    "toolName": "Tool Name",
+    "category": "Category",
+    "storageLocation": "Storage Location",
+    "condition": "Condition",
+    "lastUsed": "Last Used",
+    "lastMaintenance": "Last Maintenance",
+    "nextMaintenance": "Next Maintenance",
+    "usageCount": "Usage Count",
+    "notes": "Notes",
+    "maintenanceInterval": "Maintenance Interval (days)",
+    "conditions": {
+      "excellent": "Excellent",
+      "good": "Good",
+      "fair": "Fair",
+      "poor": "Poor",
+      "needs_repair": "Needs Repair"
+    },
+    "statuses": {
+      "available": "Available",
+      "in_use": "In Use",
+      "maintenance": "Under Maintenance",
+      "retired": "Retired"
+    },
+    "startUsage": "Start Usage",
+    "endUsage": "End Usage",
+    "productionOrder": "Production Order"
+  },
+  "maintenance": {
+    "title": "Maintenance Management",
+    "addRecord": "Add Maintenance Record",
+    "maintenanceType": "Maintenance Type",
+    "description": "Description",
+    "performedBy": "Performed By",
+    "maintenanceDate": "Maintenance Date",
+    "nextMaintenanceDate": "Next Maintenance Date",
+    "cost": "Cost",
+    "partsReplaced": "Parts Replaced",
+    "upcomingMaintenance": "Upcoming Maintenance",
+    "overdueTools": "Overdue Tools",
+    "maintenanceHistory": "Maintenance History",
+    "types": {
+      "preventive": "Preventive",
+      "corrective": "Corrective",
+      "calibration": "Calibration",
+      "inspection": "Inspection",
+      "cleaning": "Cleaning"
+    }
+  }
+}
