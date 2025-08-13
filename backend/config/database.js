@@ -85,15 +85,22 @@ db.serialize(() => {
     FOREIGN KEY (tool_id) REFERENCES tools (id) ON DELETE CASCADE
   )`);
 
-  const adminPassword = '$2a$10$H79X8UnF8BSnYN6oSA/43e5qGPOGPAjt.MudcB9nppnnL6AqvLPqW';
-  db.run(`INSERT OR IGNORE INTO users (username, password, role) VALUES (?, ?, ?)`,
-    ['admin', adminPassword, 'admin'],
-    (err) => {
-      if (!err) {
-        console.log('Default admin user created (username: admin, password: admin123)');
+  // Create default admin user with properly hashed password
+  const bcrypt = require('bcryptjs');
+  const adminPassword = bcrypt.hashSync('admin123', 10);
+  
+  db.run(`DELETE FROM users WHERE username = 'admin'`, () => {
+    db.run(`INSERT INTO users (username, password, role) VALUES (?, ?, ?)`,
+      ['admin', adminPassword, 'admin'],
+      (err) => {
+        if (err) {
+          console.error('Error creating admin user:', err);
+        } else {
+          console.log('Default admin user created (username: admin, password: admin123)');
+        }
       }
-    }
-  );
+    );
+  });
 });
 
 module.exports = db;

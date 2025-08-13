@@ -53,37 +53,54 @@ router.post('/login', [
 
   const { username, password } = req.body;
   
+  console.log('Login attempt for username:', username);
+  
   db.get(
     'SELECT * FROM users WHERE username = ?',
     [username],
     async (err, user) => {
-      if (err || !user) {
+      if (err) {
+        console.error('Database error:', err);
+        return res.status(500).json({ error: 'Database error' });
+      }
+      
+      if (!user) {
+        console.log('User not found:', username);
         return res.status(401).json({ error: 'Invalid credentials' });
       }
       
-      const validPassword = await bcrypt.compare(password, user.password);
-      if (!validPassword) {
-        return res.status(401).json({ error: 'Invalid credentials' });
-      }
+      console.log('User found, checking password...');
       
-      const token = jwt.sign(
-        { 
-          id: user.id, 
-          username: user.username, 
-          role: user.role 
-        },
-        process.env.JWT_SECRET || 'your-secret-key',
-        { expiresIn: '24h' }
-      );
-      
-      res.json({ 
-        token,
-        user: {
-          id: user.id,
-          username: user.username,
-          role: user.role
+      try {
+        const validPassword = await bcrypt.compare(password, user.password);
+        console.log('Password valid:', validPassword);
+        
+        if (!validPassword) {
+          return res.status(401).json({ error: 'Invalid credentials' });
         }
-      });
+        
+        const token = jwt.sign(
+          { 
+            id: user.id, 
+            username: user.username, 
+            role: user.role 
+          },
+          process.env.JWT_SECRET || 'your-secret-key',
+          { expiresIn: '24h' }
+        );
+        
+        res.json({ 
+          token,
+          user: {
+            id: user.id,
+            username: user.username,
+            role: user.role
+          }
+        });
+      } catch (error) {
+        console.error('Password comparison error:', error);
+        return res.status(500).json({ error: 'Authentication error' });
+      }
     }
   );
 });
