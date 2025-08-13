@@ -33,7 +33,9 @@ const Login: React.FC<LoginProps> = ({ setIsAuthenticated }) => {
     setError('');
 
     try {
+      console.log('Attempting login with:', { username });
       const response = await authAPI.login({ username, password });
+      console.log('Login response:', response.data);
       const { token, user } = response.data;
       
       localStorage.setItem('token', token);
@@ -41,7 +43,9 @@ const Login: React.FC<LoginProps> = ({ setIsAuthenticated }) => {
       setIsAuthenticated(true);
       navigate('/dashboard');
     } catch (err: any) {
-      setError(err.response?.data?.error || t('auth.loginFailed'));
+      console.error('Login error:', err);
+      console.error('Error response:', err.response);
+      setError(err.response?.data?.error || err.message || t('auth.loginFailed'));
     }
   };
 
