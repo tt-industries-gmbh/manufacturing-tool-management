@@ -85,18 +85,35 @@ db.serialize(() => {
     FOREIGN KEY (tool_id) REFERENCES tools (id) ON DELETE CASCADE
   )`);
 
-  // Create default admin user with properly hashed password
+  // Seed admin user. Password must come from ADMIN_PASSWORD env var.
+  // If unset, a cryptographically random password is generated and printed
+  // ONCE — operator must capture and rotate immediately.
   const bcrypt = require('bcryptjs');
-  const adminPassword = bcrypt.hashSync('admin123', 10);
-  
-  db.run(`DELETE FROM users WHERE username = 'admin'`, () => {
+  const crypto = require('crypto');
+
+  const providedPassword = process.env.ADMIN_PASSWORD;
+  const adminPasswordPlain = providedPassword || crypto.randomBytes(18).toString('base64url');
+  const adminPasswordHash = bcrypt.hashSync(adminPasswordPlain, 10);
+
+  db.get(`SELECT id FROM users WHERE username = 'admin'`, (err, row) => {
+    if (row) return;
     db.run(`INSERT INTO users (username, password, role) VALUES (?, ?, ?)`,
-      ['admin', adminPassword, 'admin'],
+      ['admin', adminPasswordHash, 'admin'],
       (err) => {
         if (err) {
           console.error('Error creating admin user:', err);
+          return;
+        }
+        if (providedPassword) {
+          console.log('Admin user created from ADMIN_PASSWORD env var.');
         } else {
-          console.log('Default admin user created (username: admin, password: admin123)');
+          console.log('========================================================');
+          console.log('Admin user created with generated password:');
+          console.log('  username: admin');
+          console.log('  password: ' + adminPasswordPlain);
+          console.log('STORE THIS NOW — it will not be shown again.');
+          console.log('Set ADMIN_PASSWORD env var and rotate after first login.');
+          console.log('========================================================');
         }
       }
     );
