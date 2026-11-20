@@ -9,7 +9,7 @@ services:
     environment:
       NODE_ENV: production
       PORT: 5000
-      JWT_SECRET: ${JWT_SECRET:-your-secret-key-change-this-in-production}
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET, e.g. openssl rand -hex 32}
       DB_PATH: /data/tools.db
     volumes:
       - ./data:/data

@@ -7,6 +7,9 @@ const path = require('path');
 
 dotenv.config();
 
+// Stop at startup if JWT_SECRET is missing or weak (see config/jwt.js).
+require('./config/jwt').getJwtSecret();
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
