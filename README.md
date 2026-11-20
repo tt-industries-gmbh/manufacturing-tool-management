@@ -108,7 +108,7 @@ Create a `.env` file in the backend directory:
 
 ```env
 PORT=5000
-JWT_SECRET=your-secret-key-change-this-in-production
+JWT_SECRET=<output of: openssl rand -hex 32>
 DB_PATH=./database/tools.db
 NODE_ENV=development
 ```
